@@ -8,16 +8,16 @@ package fundamentals;
  */
 public class Euclid {
 
-    public static int gcd(int p, int q) {
+    public static int euclid (int p, int q) {
         if (q == 0) {
             return p;
         }
         int r = p % q;
-        return gcd(q, r);
+        return euclid(q, r);
     }
 
     public static void main(String[] args) {
-        System.out.println(gcd(0, 4));
+        System.out.println(euclid(60, 12));
     }
 
 }
