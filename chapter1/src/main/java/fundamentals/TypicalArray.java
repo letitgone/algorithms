@@ -73,13 +73,49 @@ public class TypicalArray {
     public static double[] reverseOrder(double[] arr) {
         System.out.println("Original array: " + Arrays.toString(arr));
         double[] reverseArray = new double[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = reverseArray.length - 1; j > 0; j--) {
-                reverseArray[j] = arr[i];
-                continue;
-            }
+        int j = 0;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            reverseArray[j] = arr[i];
+            j++;
         }
         return reverseArray;
+    }
+
+    /**
+     * 颠倒顺序2
+     *
+     * @param arr
+     * @return
+     */
+    public static double[] reverseOrder2(double[] arr) {
+        System.out.println("Original array: " + Arrays.toString(arr));
+        int arrayLength = arr.length;
+        for (int i = 0; i < arrayLength / 2; i++) {
+            double temp = arr[i];
+            arr[i] = arr[arrayLength - 1 - i];
+            arr[arrayLength - 1 - i] = temp;
+        }
+        return arr;
+    }
+
+    /**
+     * 矩阵相乘（方阵）
+     *
+     * @return
+     */
+    public static double[][] matrixMultiplication() {
+        double[][] a = new double[3][4];
+        double[][] b = new double[3][4];
+        int arrayLength = a.length;
+        double[][] c = new double[arrayLength][arrayLength];
+        for (int i = 0; i < arrayLength; i++) {
+            for (int j = 0; j < arrayLength; j++) {
+                for (int k = 0; k < arrayLength; k++) {
+                    c[i][j] += a[i][k] * b[k][j];
+                }
+            }
+        }
+        return c;
     }
 
     public static void main(String[] args) {
@@ -87,5 +123,6 @@ public class TypicalArray {
         System.out.println(calculateAverageValue(initArray(10)));
         System.out.println(Arrays.toString(copyArray(initArray(10))));
         System.out.println(Arrays.toString(reverseOrder(initArray(10))));
+        System.out.println(Arrays.toString(reverseOrder2(initArray(10))));
     }
 }
